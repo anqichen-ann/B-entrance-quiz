@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.entrancequiz.api;
 
+import javafx.util.Pair;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,11 @@ public class GroupController {
             "花木兰", "雅典娜", "芈月", "白起", "刘禅", "庄周", "马超", "刘备",
             "哪吒", "大乔", "蔡文姬"};
     public List<String> studentList = Arrays.asList(student);
+
+    @GetMapping("/student")
+    public ResponseEntity getStudent(){
+        return ResponseEntity.ok(studentList);
+    }
 
     @GetMapping("/group")
     public ResponseEntity groupStudent(){
@@ -33,4 +39,14 @@ public class GroupController {
         }
         return ResponseEntity.ok(list);
     }
+
+    @PostMapping("/addStudent")
+    public ResponseEntity addNewStudent(@RequestBody Pair<String,String> newStudent){
+        String newName = newStudent.getValue();
+        studentList.add(newName);
+        return ResponseEntity.ok(studentList);
+
+    }
+
+
 }
