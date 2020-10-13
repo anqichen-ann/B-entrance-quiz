@@ -1,6 +1,6 @@
 package com.thoughtworks.capability.gtb.entrancequiz.api;
 
-import javafx.util.Pair;
+import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -41,9 +41,8 @@ public class GroupController {
     }
 
     @PostMapping("/addStudent")
-    public ResponseEntity addNewStudent(@RequestBody Pair<String,String> newStudent){
-        String newName = newStudent.getValue();
-        studentList.add(newName);
+    public ResponseEntity addNewStudent(@RequestBody Student newStudent){
+
         return ResponseEntity.ok(studentList);
 
     }
