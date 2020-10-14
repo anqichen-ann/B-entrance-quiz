@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Student {
     private String name;
+    // GTB: 变量不符合命名规范
     private int ID;
 }
